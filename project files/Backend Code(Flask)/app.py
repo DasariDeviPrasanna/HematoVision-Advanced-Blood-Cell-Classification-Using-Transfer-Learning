@@ -1,13 +1,18 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 import os
 import numpy as np
 import cv2
-import base64
+from werkzeug.utils import secure_filename
 from tensorflow.keras.models import load_model
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
-app = Flask(__name__)
-model = load_model("Blood Cell.h5")
+app = Flask(__name__, template_folder='../Frontend(templates)', static_folder='static')
+model = load_model("../Model Training/BloodCell.h5")
+
+# Create a 'static/uploads' folder if it doesn't exist
+uploads_folder = os.path.join('static', 'uploads')
+if not os.path.exists(uploads_folder):
+    os.makedirs(uploads_folder)
 
 class_labels = ['eosinophil', 'lymphocyte', 'monocyte', 'neutrophil']
 
@@ -19,7 +24,7 @@ def predict_image_class(image_path, model):
     predictions = model.predict(img_preprocessed)
     predicted_class_idx = np.argmax(predictions, axis=1)[0]
     predicted_class_label = class_labels[predicted_class_idx]
-    return predicted_class_label, img_rgb
+    return predicted_class_label
 
 @app.route("/", methods=["GET", "POST"])
 def upload_file():
@@ -30,14 +35,14 @@ def upload_file():
         if file.filename == "":
             return redirect(request.url)
         if file:
-            file_path = os.path.join("static", file.filename)
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(uploads_folder, filename)
             file.save(file_path)
-            predicted_class_label, img_rgb = predict_image_class(file_path, model)
+            predicted_class_label = predict_image_class(file_path, model)
             
-            _, img_encoded = cv2.imencode('.png', cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR))
-            img_str = base64.b64encode(img_encoded).decode('utf-8')
+            image_file_path = os.path.join('uploads', filename)
 
-            return render_template("result.html", class_label=predicted_class_label, img_data=img_str)
+            return render_template("result.html", class_label=predicted_class_label, image_file=image_file_path)
     return render_template("home.html")
 
 if __name__ == "__main__":

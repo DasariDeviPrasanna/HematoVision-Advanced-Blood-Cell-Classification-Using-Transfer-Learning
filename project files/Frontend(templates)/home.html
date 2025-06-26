@@ -26,6 +26,20 @@
         .footer {
             border-radius: 0 0 8px 8px;
         }
+        .button-class {
+			background-color: #4CAF50;
+			/* Green */
+			border: none;
+			color: white;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			border-radius: 4px;
+		}
     </style>
 </head>
 <body>
@@ -42,7 +56,8 @@
         <form method="post" enctype="multipart/form-data">
             <input type="file" name="file" required>
             <br><br>
-            <button type="submit" class="button">Predict</button>
+            <a href="result.html" class="button-class">
+            predict</a>
         </form>
     </div>
 </body>

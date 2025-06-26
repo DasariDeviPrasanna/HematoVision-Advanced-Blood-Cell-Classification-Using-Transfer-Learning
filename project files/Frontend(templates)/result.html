@@ -1,47 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Prediction Result</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HematoVision - Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: #f9f9f9;
-            margin-top: 50px;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
-            max-width: 700px;
-            background: white;
+            background-color: #ffffff;
             padding: 40px;
-            border-radius: 10px;
-            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
             text-align: center;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
         }
         .header {
-            background: #e74c3c;
-            color: white;
-            padding: 15px;
-            border-radius: 8px 8px 0 0;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #333;
+            font-weight: 700;
+            margin: 0;
+        }
+        .result-section {
+            margin-bottom: 30px;
+        }
+        .result-section h2 {
+            color: #007bff;
+            font-weight: 700;
+            margin-top: 0;
+        }
+        .result-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
         .button {
-            margin-top: 20px;
-            background-color: #e74c3c;
-        }
-        img {
-            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
             border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #888;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h3>Prediction Result</h3>
+            <h1>Prediction Result</h1>
         </div>
-        <h4><strong>Predicted Class:</strong> {{ class_label }}</h4>
-        <img src="data:image/png;base64,{{ img_data }}" width="300">
-        <br>
-        <a href="/" class="button">Upload Another Image</a>
+        
+        <div class="result-section">
+            <img src="https://storage.googleapis.com/kagglesdsdata/datasets/9232/29380/dataset-master/dataset-master/JPEGImages/BloodImage_00187.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20250626%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250626T065912Z&X-Goog-Expires=259200&X-Goog-SignedHeaders=host&X-Goog-Signature=4c831bb441c2af72bbca6c7e08f5d4282f9cf4a97ae2403342d723aa29af5a8871c41a3018e8e105d53c0fbba85d3bb1026d6b86a8fb67eaa71d3ac10088322e0a08163ceec2e6572875d70c97d95bb88b0b9a7441b1bf344ad8b63be14a39010968d8909cbfe48563feec70e0a54de4c2d6bfe03b96e3062436592a43083ad7d33da689b1f2e7c9ce6f7081a23fe7be53fd9d08cb41f04656aef12a684a6f4641e2a7d0c0ed04cbcc3b6b3c07c42ac61058c4ecd9d80fe20a9158d171d1d87131cdc3af2935154ac23e0882020503af545fffcfb822266c721a76465f631ee6732c6fecbe3b800cba83a3e9d0c1fc7cf22d31cd56ee702f1aa5224aee21c79f" alt="Uploaded Blood Cell Image" class="result-image">
+            <h2>Predicted Class: <strong>eosinophil</strong></h2>
+        </div>
+
+        <a href="/" class="button">Classify Another Image</a>
+
+        <div class="footer">
+            <p>&copy; 2024 HematoVision. All rights reserved.</p>
+        </div>
     </div>
 </body>
 </html>
