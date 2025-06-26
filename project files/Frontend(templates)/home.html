@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HematoVision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <style>
+        body {
+            background: #f9f9f9;
+            margin-top: 50px;
+        }
+        .container {
+            max-width: 700px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .header, .footer {
+            text-align: center;
+            background: #e74c3c;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            color: white;
+        }
+        .footer {
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Welcome to the HematoVision</h3>
+        </div>
+        <h4>About Blood Cells</h4>
+        <p>
+            Blood cells are vital components of our body, playing essential roles in immunity, oxygen transport, and clotting.
+            Understanding different types of blood cells is crucial for diagnosing various medical conditions.
+        </p>
+        <h4>Predict Blood Cell Type</h4>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <br><br>
+            <button type="submit" class="button">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
