@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(1.2) blur(1.5px);
+        }
+
+        .result-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            background: rgba(28, 26, 26, 0.8); /* deep reddish transparent */
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        img {
+            margin-top: 15px;
+            border-radius: 8px;
+            width: 320px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: #ff4b2b;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #ff1e00;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='blood_bg.mp4 2.mp4') }}" type="video/mp4">
+    </video>
+
+    <div class="result-box">
+        <h2>Prediction Result</h2>
+        <p>Predicted Cell Type: {{ prediction }}</p>
+        <h3>Uploaded Blood Cell Image</h3>
+        <img src="{{ image_path }}" alt="Uploaded Blood Cell Image" style="max-width:400px;">
+        <a href="{{ url_for('home') }}">Go Back</a>
+    </div>
+
+</body>
+</html>
