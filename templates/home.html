@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Cell Classification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(1.2) blur(1.5px);
+        }
+
+        .form-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            background: rgba(139, 0, 0, 0.8); /* deep reddish transparent */
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 50 20px rgba(0, 0, 0, 0.6);
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+            padding: 8px;
+            width: 60%;
+            max-width: 250px;
+            background-color: dark reddish;
+            border: none;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color:rgb(120, 6, 6);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color:rgb(126, 30, 38);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="{{ url_for('static', filename='blood_bg.mp4') }}" type="video/mp4">
+    </video>
+
+    <form class="form-box" action="/predict" method="post" enctype="multipart/form-data">
+        <h2>Upload Blood Cell Image</h2>
+        <input type="file" name="image" accept="image/*" required><br>
+        <input type="submit" value="Predict">
+    </form>
+
+</body>
+</html>
