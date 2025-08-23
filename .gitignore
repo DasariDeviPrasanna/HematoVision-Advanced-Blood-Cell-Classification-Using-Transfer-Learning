@@ -7,10 +7,29 @@ dataset/
 *.png
 *.mp4
 *.avi
+*.mov
 
 # Model files
 blood_cell_model.h5/
+models/
 *.h5
+*.hdf5
+*.pkl
+*.pth
+
+# Video files
+Video Demo/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Large media files
+static/*.jpg
+static/*.jpeg
+static/*.png
+static/*.mp4
+static/*.avi
 
 # Python
 __pycache__/
@@ -38,3 +57,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Git LFS
+.git/lfs/
