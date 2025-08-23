@@ -61,5 +61,6 @@ Thumbs.db
 # Git LFS
 .git/lfs/
 
-# Railway (keep this)
+# Deployment platforms
+.vercel/
 .railway/
