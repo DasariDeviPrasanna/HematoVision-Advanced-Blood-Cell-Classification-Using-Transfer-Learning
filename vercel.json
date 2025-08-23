@@ -2,17 +2,38 @@
   "version": 2,
   "builds": [
     {
-      "src": "app.py/app.py",
+      "src": "api/index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
+      "src": "/",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/home",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/predict",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/health",
+      "dest": "/api/index.py"
+    },
+    {
       "src": "/(.*)",
-      "dest": "app.py/app.py"
+      "dest": "/api/index.py"
     }
   ],
   "env": {
     "PYTHONPATH": "."
+  },
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 30
+    }
   }
 }
