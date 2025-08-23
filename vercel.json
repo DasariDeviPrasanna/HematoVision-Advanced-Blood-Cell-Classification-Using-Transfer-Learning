@@ -8,32 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/home",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/predict",
-      "dest": "/api/index.py"
-    },
-    {
-      "src": "/health",
-      "dest": "/api/index.py"
-    },
-    {
       "src": "/(.*)",
       "dest": "/api/index.py"
     }
-  ],
-  "env": {
-    "PYTHONPATH": "."
-  },
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
